@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.8/d3.min.js" charset="utf-8"></script>
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+        <script src="https://d3js.org/d3-geo-projection.v1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+    </head>
+    <body>
+        <style>
+            body{
+                background-color:#808080 ;
+            }
+           #map{
+               margin-left:17%;
+               background-color: white;
+               border: 2px solid black;
+           }
+           
+           button{
+               margin-bottom: 10px;
+               margin-right:10px;
+               width: 180px;
+                 height: 40px;
+                padding: 0;
+                border: 2px solid #000;
+                font-family: 'Lato', sans-serif;
+                font-weight: 500;
+                background: transparent;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                position: relative;
+                display: inline-block;
+                transition: all 0.3s ease;
+           }
+
+            button:hover {
+            box-shadow:
+            -7px -7px 20px 0px #fff9,
+            -4px -4px 5px 0px #fff9,
+            7px 7px 20px 0px #0002,
+            4px 4px 5px 0px #0001;
+            }
+            rect:hover{
+                cursor: pointer;
+            }
+
+           .buttons{
+               display: flex;
+               max-width: 400px;
+               margin-left: 37%;
+           }
+           h1{
+               margin-left: 33%;
+               font-family: 'Lato', sans-serif;
+           }
+
+           path:hover{
+               fill:  red;
+               cursor: pointer;
+           }
+           .d3-tip {
+            line-height: 1;
+            padding: 6px;
+            background: wheat;
+            border-radius: 4px solid black;
+            font-size: 12px;
+            }
+
+            p {
+            font-family: Helvetica;
+            }
+            .Details{
+                visibility: hidden;
+                
+            }
+            #cases{
+                margin-left: 17%;
+            }
+            #deaths{
+                margin-left: 17%;
+            }
+            #pieCases{
+                margin-left: 17%;
+            }
+            #pieDeaths{
+                margin-left: 10%;
+            }
+            #gradient-bar {
+                height: 300px;
+                width: 15px;
+                border-radius: 10px;
+                border: 1px solid black;
+                background: linear-gradient(white, #8b0000);
+                transform: translate(1170px,-2070px);
+            }
+            #legend-bar{
+                height: 400px;
+                width: 15px;
+                transform: translate(1200px,-2455px);
+            }
+            #legend-title{
+                height: 15px;
+                width: 160px;
+                transform: translate(1100px,-2085px);
+                text-align: center;
+            }
+            p{
+                margin-bottom: 35px;
+            }
+            #detailed{
+                transform: translateX(-50px);
+            }
+            #details{
+                margin-left: 10%;
+            }
+           
+          </style>
+        <h1>Please select a button to display data</h1>
+        <div class="buttons">
+            <button id="zoom-in" onclick="Both()">Americas</button>
+            <button id="zoom-out" onclick="NA()">North America</button>
+            <button id="zoom_init" onclick="SA()">South America</button>
+        </div>
+        
+        <div id="vizContainer">
+            <svg id="map" width="1000" height="1000"></svg>
+            <div id='tooltip'></div>
+        </div>
+        <h1 id="detailed">Please click on a country to display data</h1>
+        <div class="Details">
+            <svg id="details" width="1000" height="200"></svg>
+            <svg id="cases" width="1000" height="300"></svg>
+            <svg id="deaths" width="1000" height="300"></svg>
+            <div style="display: flex; ">
+                <svg id="pieCases" width="500" height="300"></svg>
+                <svg id="pieDeaths" width="500" height="300"></svg>
+            </div>
+           
+        </div>
+        <div id="gradient-bar"></div>
+        <p id="legend-title">Weekly Percent Change in Covid Cases</p>
+        <div id="legend-bar" style="display: flex; flex-direction: column;">
+            <p>-100</p>
+            <p>-50</p>
+            <p>-0</p>
+            <p>+50</p>
+            <p>+100</p>
+        </div>
+        
+        </div>
+        <script src="index.js"></script>
+       
+    </body>
+    
+</html>
